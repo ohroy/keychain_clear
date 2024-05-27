@@ -1,3 +1,29 @@
+
+## what
+
+致敬阿飞
+让这个小脚本继续焕发光彩！
+
+## how
+其实主要是年久失修
+这个fork主要解决了两个问题
+1. 适配rootless越狱
+2. 解决高版本下通配符无权限问题
+
+## 使用说明
+能用这个的应该都是开发者， ios不知道什么时候起描述文件不再支持通配符了（我太菜了）
+现在的方式就是简单粗暴，从设备里拉出来数据库然后去重group
+然后把需要操作的group放到sign.plist就行了。
+```shell
+cd /tmp
+scp phone:/var/Keychains/keychain-2.db ./
+sqlite3 ./keychain-2.db "SELECT DISTINCT agrp FROM genp" > ./allgroups.txt
+sqlite3 ./keychain-2.db "SELECT DISTINCT agrp FROM cert" >> ./allgroups.txt
+sqlite3 ./keychain-2.db "SELECT DISTINCT agrp FROM inet" >> ./allgroups.txt
+sqlite3 ./keychain-2.db "SELECT DISTINCT agrp FROM keys" >> ./allgroups.txt
+```
+
+
 功能：
 
 1.展示钥匙串所有组信息。
