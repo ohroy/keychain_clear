@@ -34,9 +34,13 @@ NSArray * getKeychainObjectsForSecClass(CFTypeRef kSecClassType) {
 	[genericQuery setObject:(id)kCFBooleanTrue forKey:(id)kSecReturnData];
 	
 	NSArray *keychainItems = nil;
-	if (SecItemCopyMatching((CFDictionaryRef)genericQuery, (CFTypeRef *)&keychainItems) != noErr)
+	int x=SecItemCopyMatching((CFDictionaryRef)genericQuery, (CFTypeRef *)&keychainItems);
+	if ( x!= noErr)
 	{
+		NSLog(@"error: %d",x);
 		keychainItems = nil;
+	}else{
+		NSLog(@"error: okkk");
 	}
 	[genericQuery release];
 	return keychainItems;
@@ -64,6 +68,7 @@ NSArray * getAllGroupsInKeychainObjecs()
 	{
 		NSArray * groups =	getAllGroupsInKeychainForSecClass(kSecClassType);
 		[allGroups addObjectsFromArray:groups];
+		NSLog(@"adafas %@",groups);
 	}
 	return allGroups;
 }
