@@ -23,7 +23,7 @@ sqlite3 ./keychain-2.db "SELECT DISTINCT agrp FROM inet" >> ./allgroups.txt
 sqlite3 ./keychain-2.db "SELECT DISTINCT agrp FROM keys" >> ./allgroups.txt
 ```
 
-
+## origin
 功能：
 
 1.展示钥匙串所有组信息。
@@ -94,3 +94,6 @@ KeyChain中的ItemOSStatus SecItemDelete(CFDictionaryRef query)
 
 
 
+
+## ref
+* [https://github.com/ptoomey3/Keychain-Dumper](https://github.com/ptoomey3/Keychain-Dumper)
